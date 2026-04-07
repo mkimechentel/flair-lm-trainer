@@ -1,6 +1,7 @@
 """Etape 2 : Entrainement du Flair Language Model."""
 
 from pathlib import Path
+import torch.nn as nn
 from flair.data import Dictionary
 from flair.models import LanguageModel
 from flair.embeddings import FlairEmbeddings
@@ -24,7 +25,11 @@ def train(config, corpus_dir):
 
     if config.finetune_from is not None:
         print("Chargement du modele existant : " + config.finetune_from)
-        language_model = FlairEmbeddings(config.finetune_from).lm
+        emb = FlairEmbeddings(config.finetune_from)
+        language_model = emb.lm
+        # Recreer le decodeur (Flair le supprime au chargement)
+        nout = len(language_model.dictionary)
+        language_model.decoder = nn.Linear(language_model.hidden_size, nout)
     else:
         print("Creation d'un nouveau LanguageModel (from scratch)")
         language_model = LanguageModel(
@@ -43,6 +48,7 @@ def train(config, corpus_dir):
         mini_batch_size=config.mini_batch_size,
         max_epochs=config.max_epochs,
         learning_rate=config.learning_rate,
+        num_workers=0,
     )
 
     print("Entrainement termine ! Modele sauvegarde dans : " + str(output_path))

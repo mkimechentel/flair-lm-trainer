@@ -1,0 +1,3 @@
+| end of split   1 /  1 | epoch   1 | time: 12.96s | valid loss 2.7273 | valid ppl 15.2920 | learning rate 20.0000
+| end of split   1 /  1 | epoch   2 | time: 13.39s | valid loss 2.4023 | valid ppl 11.0484 | learning rate 20.0000
+TEST: valid loss 2.6492 | valid ppl  14.1425

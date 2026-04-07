@@ -1,0 +1,24 @@
+2026-04-07 15:03:06,517 read text file with 209 lines
+2026-04-07 15:03:06,517 shuffled
+2026-04-07 15:03:06,519 Sequence length is 10
+2026-04-07 15:03:06,520 Split 1	 - (15:03:06)
+2026-04-07 15:03:18,203 best split so far
+2026-04-07 15:03:18,203 best loss so far 2.72733189
+2026-04-07 15:03:19,482 ('\ndin 6u hab dad schid sich chaÔt hab abbech die bi sich ab s> burd sich stliß ab hab die Fursaltt Jans muß sach spyrd Matautt ab hab ab gs áb čest sye ßac natÒ Matt Sy die νhatt furs ab obgigen\nspfurder zu anzi gad sych die budô Ih abig ab abdrucken Parsall\ndie fursaht gachtt.\nduß spurdāß ghaßtt Ñum Las amc hab Stufn %pmeid die hatt ab Jac\ndaП ih gob sab hab щist ab sae ghatd hurs obgeitt st.\nabrdб auch Rud\nabÖ fursumttt Jard ÷uch diebes\ndahe wye die datt b sie darst Ja satt du zu schit hat sye vab da½ alf stlich гób\nsy ’ ab òrdesuspid Ratнt abgatt bug ob atu sych “da sumb мs syd hab ¶lbe Im sabe ablud<unk>üw kommelund ei Wirstwußd ih sact ckl\nk6 st diend murg\nudōtz ab aburdatt Òhach sich du ob dar Tfursiò ghandluß vtrsallen syht ab fursurd αñ att furstν gfatt Habt sordid vmus die sye die sis die aviwtl, die ab ob wurd furs syg at furstlide luszuwÏdl >obghabt urd zu wyid std, die sume ыi schid mußige Ben X Im no hab kob ist man die hab \ndur die hab sye bM Vid id Lattn sums vnd alt boumb hab', 2.0376190185546874)
+2026-04-07 15:03:19,482 -----------------------------------------------------------------------------------------
+2026-04-07 15:03:19,482 | end of split   1 /  1 | epoch   1 | time: 12.96s | valid loss 2.7273 | valid ppl 15.2920 | learning rate 20.0000
+2026-04-07 15:03:19,482 -----------------------------------------------------------------------------------------
+2026-04-07 15:03:19,482 12 seconds for train split 1
+2026-04-07 15:03:19,482 Epoch time: 12.97
+2026-04-07 15:03:19,586 read text file with 209 lines
+2026-04-07 15:03:19,586 shuffled
+2026-04-07 15:03:19,587 Sequence length is 10
+2026-04-07 15:03:19,587 Split 1	 - (15:03:19)
+2026-04-07 15:03:31,502 best split so far
+2026-04-07 15:03:31,505 best loss so far 2.40228938
+2026-04-07 15:03:32,981 ('\noder vnstachtenn, $euri Herr\nfürenn, obgerechtt, Llрirs, ьlleindargel\ndennr dharen, dahg der Im vergfragt, selbe geben.\nGegenacht, hab wordenn, nil nit alas es .\nheret, teumenn, dangefern, dnr hilffrragtt, werre…\nniteenn, obgleßen\nVnnnyigtt, ob es hilffragt, haber\nJurgen, dıß dergegen,\nspereen.\nőecedter_Teralt, dab borgegeb\nEüchtülung versagt, mit wordenn.\nDit daelia vnm keinirςn.\nwengen, dnr hanner\nvnnd,  M6³lter\nbß zerguwetrtt, tuges fragt, sey weyge hilfennferter\nangedegt, unnd\nFurem wegegenn, NußHorgen\nVnnststelter\nworden, dnamlaren 26\nnitdert, vnd abergedrachdit verlaßenn.\nihmenty, nit ) der nit gedigt, sey Werrrachtt, füllenn.\nhabre<b pemenn.\nSyllennby \nobgergebrt, Insem, habe selbiger.\ndanlichelr\n2ç 1111 Lomel.\nke¶gebeltd, Vnd nit ouch laßenn, nnumeselortechs\nhabbebregenn.\neub vnd nnitter diarØohebug aber gerladt,\nünseirdlich hüreans\nNit hans zumelternn, knd ngyremmen\ndiead»tborgenn, Altzil habetn, dannen\nß\nïinkenn, wordenndsi\nNit 1n, Abİrm Irer\nvn\ngsthalt, pergl, obberralpterte', 1.941951416015625)
+2026-04-07 15:03:32,981 -----------------------------------------------------------------------------------------
+2026-04-07 15:03:32,982 | end of split   1 /  1 | epoch   2 | time: 13.39s | valid loss 2.4023 | valid ppl 11.0484 | learning rate 20.0000
+2026-04-07 15:03:32,982 -----------------------------------------------------------------------------------------
+2026-04-07 15:03:32,982 13 seconds for train split 1
+2026-04-07 15:03:32,982 Epoch time: 13.50
