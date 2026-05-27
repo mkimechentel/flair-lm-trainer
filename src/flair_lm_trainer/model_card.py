@@ -30,8 +30,10 @@ def generate_model_card(config):
     card = card + "- Learning rate: " + str(config.learning_rate) + "\n\n"
     card = card + "## Usage\n\n"
     card = card + "```python\n"
+    ccard = card + "from huggingface_hub import hf_hub_download\n"
     card = card + "from flair.embeddings import FlairEmbeddings\n\n"
-    card = card + "embeddings = FlairEmbeddings('" + str(config.model_repo_name) + "')\n"
+    card = card + "model_path = hf_hub_download('" + str(config.model_repo_name) + "', 'best-lm.pt')\n"
+    card = card + "embeddings = FlairEmbeddings(model_path)\n"
     card = card + "```\n"
 
     return card
