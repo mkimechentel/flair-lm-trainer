@@ -1,6 +1,7 @@
 """Etape 2 : Entrainement du Flair Language Model."""
 
 from pathlib import Path
+import flair
 import torch.nn as nn
 from flair.data import Dictionary
 from flair.models import LanguageModel
@@ -23,6 +24,8 @@ def train(config, corpus_dir):
         dictionary = language_model.dictionary
         nout = len(dictionary)
         language_model.decoder = nn.Linear(language_model.hidden_size, nout)
+        # Make sure the whole model (incl. the new decoder) is on the same device
+        language_model.to(flair.device)
     else:
         # From scratch: base dictionary + corpus-specific characters (medieval Low German)
         print("Creation d'un nouveau LanguageModel (from scratch)")
