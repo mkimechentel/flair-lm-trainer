@@ -13,16 +13,34 @@ def train(config, corpus_dir):
     corpus_path = Path(corpus_dir)
     output_path = Path(config.output_dir) / "model"
 
-   # Base dictionary + corpus-specific characters (medieval Low German)
-    dictionary = Dictionary.load("chars")
-    chars_before = len(dictionary)
-    corpus_chars = set()
-    for txt_file in corpus_path.rglob("*"):
-        if txt_file.is_file():
-            corpus_chars.update(txt_file.read_text(encoding="utf-8"))
-    for ch in sorted(corpus_chars):
-        dictionary.add_item(ch)
-    print(f"Dictionary: {chars_before} base chars -> {len(dictionary)} after adding corpus")
+    # Choose model + dictionary depending on mode (from scratch vs fine-tuning)
+    if config.finetune_from is not None:
+        # Fine-tuning: reuse the base model AND its own dictionary, so the
+        # corpus is encoded with the characters the model already knows.
+        print("Chargement du modele existant : " + config.finetune_from)
+        emb = FlairEmbeddings(config.finetune_from)
+        language_model = emb.lm
+        dictionary = language_model.dictionary
+        nout = len(dictionary)
+        language_model.decoder = nn.Linear(language_model.hidden_size, nout)
+    else:
+        # From scratch: base dictionary + corpus-specific characters (medieval Low German)
+        print("Creation d'un nouveau LanguageModel (from scratch)")
+        dictionary = Dictionary.load("chars")
+        chars_before = len(dictionary)
+        corpus_chars = set()
+        for txt_file in corpus_path.rglob("*"):
+            if txt_file.is_file():
+                corpus_chars.update(txt_file.read_text(encoding="utf-8"))
+        for ch in sorted(corpus_chars):
+            dictionary.add_item(ch)
+        print(f"Dictionary: {chars_before} base chars -> {len(dictionary)} after adding corpus")
+        language_model = LanguageModel(
+            dictionary,
+            config.is_forward_lm,
+            hidden_size=config.hidden_size,
+            nlayers=config.nlayers,
+        )
 
     print("Chargement du corpus...")
     corpus = TextCorpus(
@@ -31,21 +49,6 @@ def train(config, corpus_dir):
         config.is_forward_lm,
         character_level=True,
     )
-
-    if config.finetune_from is not None: 
-        print("Chargement du modele existant : " + config.finetune_from)
-        emb = FlairEmbeddings(config.finetune_from) # Télécharge le modèle existant
-        language_model = emb.lm # Récupère le Language Model dedans
-        nout = len(language_model.dictionary) # Compte le nombre de caractères connus
-        language_model.decoder = nn.Linear(language_model.hidden_size, nout) # Recreer le decodeur (Flair le supprime au chargement)
-    else:
-        print("Creation d'un nouveau LanguageModel (from scratch)")
-        language_model = LanguageModel( # Crée un modèle vierge
-            dictionary, # L'alphabet de caractères
-            config.is_forward_lm,  # Forward ou backward
-            hidden_size=config.hidden_size,
-            nlayers=config.nlayers,
-        )
 
     trainer = LanguageModelTrainer(language_model, corpus)
 
